@@ -3,6 +3,6 @@ import { Router } from 'express'
 const router = Router()
 
 // GET localhost:3000/
-router.get('/', moviesCtrl.index)
+router.get('/', flightsCtrl.index)
 
 export { router }
