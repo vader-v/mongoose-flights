@@ -7,26 +7,32 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Flights list</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Flight Airline</th>
-        <th>Airport</th>
-        <th>Flight No.</th>
-        <th>Departure</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% flights.forEach((flight) => { %>
+  <main>
+
+    <h1>Flights list</h1>
+    <table>
+      <thead>
         <tr>
-          <td><%= flight.airline %></td>
-          <td><%= flight.airport %></td>
-          <td><%= flight.flightNo %></td>
-          <td><%= flight.departs %></td>
+          <th>Flight Airline</th>
+          <th>Airport</th>
+          <th>Flight No.</th>
+          <th>Departure</th>
         </tr>
-      <% }) %>
-    </tbody>
-  </table>
-</body>
+      </thead>
+      <tbody>
+        <% flights.forEach((flight) => { %>
+          <tr>
+            <td><%= flight.airline %></td>
+            <td><%= flight.airport %></td>
+            <td><%= flight.flightNo %></td>
+            <td><%= flight.departs %></td>
+            <td>
+              <a href="../flights/<%= flights._id %>">DETAILS</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+  </body>
 </html>
