@@ -7,6 +7,26 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <h1>Flights list</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Airline</th>
+        <th>Airport</th>
+        <th>Flight No.</th>
+        <th>Departure</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach((flight) => { %>
+        <tr>
+          <td><%= flight.airline %></td>
+          <td><%= flight.airport %></td>
+          <td><%= flight.flightNo %></td>
+          <td><%= flight.departs %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </body>
 </html>
