@@ -22,3 +22,9 @@ const flightsSchema = new Schema({
     type: Date
   }
 })
+
+const Flight = mongoose.model('Flight', flightsSchema)
+
+export {
+  Flight
+}
