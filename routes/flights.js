@@ -6,7 +6,7 @@ const router = Router()
 // GET localhost:3000/flights
 router.get('/', flightsCtrl.index)
 //GET localhost:3000/flights/new
-router.get('/flights/new', flightsCtrl.new)
+router.get('/new', flightsCtrl.new)
 // POST localhost:3000/movies
 router.post('/', flightsCtrl.create)
 
