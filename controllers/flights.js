@@ -3,6 +3,7 @@ import { Flight } from "../models/flight.js"
 function index(req, res) {
   Flight.find({})
   .then(flights => {
+    console.log(flights)
     res.render('flights/index', {
       flights,
       time: req.time,
@@ -49,9 +50,21 @@ function create(req, res) {
   })
 }
 
+function update(req, res) {
+  Flight.findByIdAndUpdate(req.params.flightId, req.body)
+  .then(()=> {
+    res.redirect('/flights')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/flights')
+  })
+}
+
 export {
   index,
   newFlight as new,
   create,
   show,
+  update,
 }

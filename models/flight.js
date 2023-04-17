@@ -23,7 +23,6 @@ const flightsSchema = new Schema({
   departs: {
     type: Date,
     required: true,
-    
   }, 
 }, {
   timestamps: true
