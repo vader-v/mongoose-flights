@@ -9,5 +9,6 @@ router.get('/', flightsCtrl.index)
 router.get('/new', flightsCtrl.new)
 // POST localhost:3000/movies
 router.post('/', flightsCtrl.create)
-
+//
+router.get('/:flightId', flightsCtrl.show)
 export { router }

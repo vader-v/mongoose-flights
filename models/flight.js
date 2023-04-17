@@ -11,6 +11,7 @@ const flightsSchema = new Schema({
   airport: {
     type: String,
     required: true,
+    default: 'DEN',
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
   },
   flightNo: {
@@ -22,6 +23,7 @@ const flightsSchema = new Schema({
   departs: {
     type: Date,
     required: true,
+    
   }, 
 }, {
   timestamps: true
