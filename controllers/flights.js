@@ -76,7 +76,7 @@ function edit(req, res) {
   Flight.findById(req.params.flightId)
   .then(flight => {
     res.render('flights/edit', {
-      flights,
+      flight,
       title: 'Edit Flight'
     })
   })
