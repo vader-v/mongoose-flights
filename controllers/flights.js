@@ -28,7 +28,7 @@ function addTicket(req, res) {
   Flight.findById(req.params.flightId)
     .populate('tickets')
     .then(flight => {
-      console.log(flights)
+      console.log(flight)
       res.render('flights/show', {
         title: 'Add Ticket',
         flight: flight
@@ -106,14 +106,19 @@ function edit(req, res) {
 }
 
 function newTicket(req, res) {
-  res.render('tickets/new', {
-    title: 'Add Ticket'
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/flights')
-  })
+  Flight.findById(req.params.flightId)
+    .then(flight => {
+      res.render('tickets/new', {
+        title: 'Add Ticket',
+        flight: flight
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/flights')
+    })
 }
+
 export {
   index,
   newFlight as new,
