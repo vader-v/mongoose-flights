@@ -103,6 +103,16 @@ function edit(req, res) {
     res.redirect('/flights')
   })
 }
+
+function newTicket(req, res) {
+  res.render('tickets/new', {
+    title: 'Add Ticket'
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
+  })
+}
 export {
   index,
   newFlight as new,
@@ -112,4 +122,5 @@ export {
   deleteFlight as delete,
   edit,
   addTicket,
+  newTicket,
 }
