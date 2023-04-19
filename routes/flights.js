@@ -10,7 +10,7 @@ router.get('/new', flightsCtrl.new)
 // POST localhost:3000/movies
 router.post('/', flightsCtrl.create)
 //PUT localhost:3000/flights/:flightId
-router.post('/:flightId', flightsCtrl.update)
+router.put('/:flightId', flightsCtrl.update)
 router.get('/:flightId', flightsCtrl.show)
 router.delete('/:flightId', flightsCtrl.delete)
 router.get('/:flightId/edit', flightsCtrl.edit)
