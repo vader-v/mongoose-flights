@@ -13,8 +13,23 @@
     <div><%= flight.flightNo %></div>
     <div>Departs:</div>
     <div><%= flight.departs %></div>
-    <div><%= flight.tickets %></div>
     <a href="../flights/<%= flight._id %>/edit">Edit</a>
+    <h2>List of Tickets</h2>
+<div>
+  <% flight.tickets.forEach(ticket => { %>
+    <div>Ticket ID: <%= ticket._id %></div>
+    <div>Seat: <%= ticket.seat %></div>
+    <div>Price: <%= ticket.price %></div>
+  <% }) %>
+</div>
+    
+    <h2>Add Ticket</h2>
+    <form action="/flights/<%= flight._id %>/tickets" method="POST">
+      <label for="seat">Seat:</label>
+      <input type="text" name="seat" id="seat">
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price" min="0" step="0.01">
+      <button type="submit">Add Ticket</button>
 
 <p>show</p>
 </main>

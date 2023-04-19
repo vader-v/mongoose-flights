@@ -19,11 +19,29 @@ function newFlight(req, res) {
   res.render('flights/new', {
     title: 'Add Flight'
   })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/flights')
+  })
 }
-
+function addTicket(req, res) {
+  Flight.findById(req.params.flightId)
+    .populate('tickets')
+    .then(flight => {
+      res.render('flights/show', {
+        title: 'Add Ticket',
+        flight: flight
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/flights')
+    })
+}
 
 function show(req, res) {
   Flight.findById(req.params.flightId)
+  .populate('tickets')
   .then(flight => {
     res.render('flights/show', {
       flight: flight,
@@ -93,4 +111,5 @@ export {
   update,
   deleteFlight as delete,
   edit,
+  addTicket,
 }
