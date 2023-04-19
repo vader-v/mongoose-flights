@@ -10,7 +10,7 @@ function newMeal(req, res) {
   })
   .catch(error => { // If there's an error, console.log it and redirect back home!
     console.log(error)
-    res.redirect('/')
+    res.redirect('/flights')
   })
 }
 
