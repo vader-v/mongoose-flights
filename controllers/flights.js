@@ -28,6 +28,7 @@ function addTicket(req, res) {
   Flight.findById(req.params.flightId)
     .populate('tickets')
     .then(flight => {
+      console.log(flights)
       res.render('flights/show', {
         title: 'Add Ticket',
         flight: flight
