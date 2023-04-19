@@ -25,20 +25,20 @@ function newFlight(req, res) {
   })
 }
 function addTicket(req, res) {
-  Flight.findById(req.params.flightId)
-    .populate('tickets')
-    .then(flight => {
-      console.log(flight)
-      res.render('flights/show', {
-        title: 'Add Ticket',
-        flight: flight
+    Flight.findById(req.params.flightId)
+      .then(flight => {
+        flight.tickets.push(req.body)
+        return flight.save()
       })
-    })
+      .then(() => {
+        res.redirect(`/flights/${req.params.flightId}`)
+      })
     .catch(err => {
       console.log(err)
-      res.redirect('/flights')
+      res.redirect(`/flights/${req.params.flightId}/tickets/new`)
     })
 }
+
 
 function show(req, res) {
   Flight.findById(req.params.flightId)
