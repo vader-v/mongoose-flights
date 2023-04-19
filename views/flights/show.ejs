@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-
+<link rel="stylesheet" href="/stylesheets/flights/show.css" />
 <%- include('../partials/nav') %>
 
 <main>
@@ -31,7 +31,7 @@
   <% }) %>
   </ul>
   <p>Please add the Meals for this flight in the dropdown:
-    <form action="/flights/<%= flight._id %>/meals" method="POST">
+    <form id="add-meal-form" action="/flights/<%= flight._id %>/meals" method="POST">
       <label for="meal">Add Meal:</label>
       <select name="meal" id="meal">
       <% meals.forEach(function(meal) { %>
