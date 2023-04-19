@@ -24,15 +24,25 @@
   </ul>
   <a href="/flights/<%=flight._id%>/tickets/new">Create new ticket here</a>
 
-  <h3>Meals:</h3>
-  <ul>
-    <% flight.meals.forEach(function(meal) { %>
-      <li><%= meal.name %></li>
-    <% }) %>
+<h3>Meals</h3>
+<ul>
+  <% flight.meals.forEach(meal => { %>
+    <li>Meal: <%= meal.name %></li>
+  <% }) %>
   </ul>
+  <p>Please add the Meals for this flight in the dropdown:
+    <form action="/flights/<%= flight._id %>/meals" method="POST">
+      <label for="meal">Add Meal:</label>
+      <select name="meal" id="meal">
+      <% meals.forEach(function(meal) { %>
+        <option value="<%= meal._id %>"><%= meal.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add Meal</button>
+    </form>
 </section>
 
-<p>show</p>
+
 </main>
 
 <%- include('../partials/footer') %>
