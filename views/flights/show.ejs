@@ -24,6 +24,12 @@
   </ul>
   <a href="/flights/<%=flight._id%>/tickets/new">Create new ticket here</a>
 
+  <h3>Meals:</h3>
+  <ul>
+    <% flight.meals.forEach(function(meal) { %>
+      <li><%= meal.name %></li>
+    <% }) %>
+  </ul>
 </section>
 
 <p>show</p>
