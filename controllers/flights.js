@@ -1,6 +1,6 @@
 import { Flight } from "../models/flight.js"
 import { Meal } from "../models/meal.js"
-
+create
 function index(req, res) {
   Flight.find({})
   .then(flights => {
@@ -68,10 +68,7 @@ function show(req, res) {
 function create(req, res) {
   Flight.create(req.body)
   .then(flight => {
-    return Flight.findByIdAndUpdate(req.params.flightId, req.body, {new: true})
-    .then(flight => {
-      res.redirect(`/flights/${flight._id}`)
-    })
+    res.redirect(`/flights/${flight._id}`)
   })
   .catch(error => {
     console.log(error)
@@ -89,6 +86,7 @@ function update(req, res) {
     res.redirect('/flights')
   })
 }
+
 
 function deleteFlight(req, res) {
   Flight.findByIdAndDelete(req.params.flightId)
