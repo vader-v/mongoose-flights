@@ -8,21 +8,36 @@ function newMeal(req, res) {
       meals,
     })
   })
-  .catch(error => { // If there's an error, console.log it and redirect back home!
-    console.log(error)
-    res.redirect('/flights')
-  })
-}
-function create(req, res) {
-  Meal.create(req.body)
-  .then(meals => {
-    res.redirect('/meals/new')
-  })
   .catch(err => {
     console.log(err)
     res.redirect('/meals/new')
   })
 }
+function create(req, res) {
+  Meal.create(req.body)
+    .then(() => {
+      Meal.find({})
+        .then(meals => {
+          res.render('meals/new', {
+            title: 'Add Meal',
+            meals,
+            success: 'Meal added successfully!',
+          })
+        })
+        .catch(err => {
+          console.log(err)
+          res.redirect('/meals/new')
+        })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/meals/new', {
+        title: 'Add Meal',
+        error: 'Error creating meal. Please try again.'
+      })
+    })
+}
+
 export {
   newMeal as new,
   create,

@@ -128,8 +128,12 @@ function newTicket(req, res) {
 }
 function addMeal(req, res) {
   Flight.findById(req.params.flightId)
+  .populate('meals')
   .then(flight => {
-    Meal.findById(req.body.meal)
+    const newMeal = new Meal(req.body);
+    newMeal.flight = flight._id;
+    newMeal.save()
+
     .then(meal => {
       flight.meals.push(meal)
       return flight.save()
